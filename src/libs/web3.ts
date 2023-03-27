@@ -1,12 +1,9 @@
 import Web3 from 'web3'
 import Web3Modal from 'web3modal'
-import type { AbiItem } from 'web3-utils'
-import type { Contract } from 'web3-eth-contract';
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import type * as W3I from './web3.interface'
 
-// 链接钱包并初始化一些对象.
 let web3: Web3
 export async function CONNECT_WALLET() {
     let rpc = {}
@@ -41,7 +38,6 @@ export async function CONNECT_WALLET() {
     }
 }
 
-// 获取当前链接的钱包基本信息.
 export async function GET_WALLET_INFO(): Promise<W3I.UserInfo> {
     const act = (await web3.eth.getAccounts())[0].toLocaleLowerCase()
     const bal = await web3.eth.getBalance(act)
